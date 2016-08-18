@@ -1,0 +1,7 @@
+9tile is a Python version of the Sliding Tile puzzle, a common problem in AI research. In the interest of simplifying the game, we will consider everything from X's point of view. (X is the 'empty space' being moved around.) The goal is to get the tiles in ascending order, 1-8, with X in the bottom right corner of the board.
+
+In the parlance of AI, 9tile is a deterministic, sequential, static, discrete problem involving a single agent.
+
+The fundamental part of an pseudo-AI approach to solving the 9-tile game will be a score function that determines pairwise distances between the current (unsolved) board and the goal state (solved) board.
+
+At each point in the game, the pseudo-AI will use the score function to evaluate game states before and after each of the four possible moves (up,down,left,right). Whereas a greedy approach might choose the immediate best option for minimizing/maximizing the resulting score, 9tile will be constructed in anticipation of a variety of different solution approaches.
