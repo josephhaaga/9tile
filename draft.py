@@ -33,6 +33,10 @@ def down(array):
 	print "Slid down";
 	return True;
 
+def invalid(array):
+	print "Invalid input";
+	return False;
+
 def slide(argument):
 	# This function moves the empty space, X, in a given direction
     switcher = {
@@ -42,7 +46,7 @@ def slide(argument):
         'down': down
     }
     # Get the function from switcher dictionary
-    func = switcher.get(argument, lambda: "nothing")
+    func = switcher.get(argument, invalid);
     # Execute the function
     return func(unsolved);
 
@@ -57,12 +61,6 @@ def printBoard(array):
 	return True;
 
 printBoard(unsolved);
-slide('up');
-printBoard(unsolved);
-
-# print unsolved == solved;
-
-# print solved == solved;
 
 game_in_progress = True;
 
