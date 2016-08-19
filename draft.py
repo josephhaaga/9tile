@@ -6,6 +6,8 @@ st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S');
 output_file = open("games/"+st+".txt", "w");
 solved = [1,2,3,4,5,6,7,8,'X'];
 unsolved = [4,2,6,1,3,8,5,'X',7];
+# save copy of original gameboard
+unsolved_original = unsolved;
 player_moves = [];
 # [4,2,6]
 # [1,3,8]
@@ -93,6 +95,7 @@ while game_in_progress:
 		print 'Game Ended';
 		# output_file.write(''.join(player_moves));
 		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
+		wr.writerow(unsolved_original);
 		wr.writerow(player_moves);
 		game_in_progress = False;
 
@@ -100,5 +103,7 @@ while game_in_progress:
 	printBoard(unsolved);
 	if(unsolved == solved):
 		print 'You win!!!';
-		output_file.write(player_moves);
+		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
+		wr.writerow(unsolved_original);
+		wr.writerow(player_moves);
 		game_in_progress = False;
