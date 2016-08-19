@@ -14,23 +14,35 @@ def swap(array,index1,index2):
 	return array;
 
 def left(array):
-	swap(array,array.index('X'),array.index('X')-1);
-	print "Slid left";
+	if(array.index('X')==0 or array.index('X')==3 or array.index('X')==6):
+		print "Invalid move";
+	else:
+		swap(array,array.index('X'),array.index('X')-1);
+		print "Slid left";
 	return True;
 
 def right(array):
-	swap(array,array.index('X'),array.index('X')+1);
-	print "Slid right";
+	if(array.index('X')==2 or array.index('X')==5 or array.index('X')==8):
+		print "Invalid move";
+	else:
+		swap(array,array.index('X'),array.index('X')+1);
+		print "Slid right";
 	return True;
 
 def up(array):
-	swap(array,array.index('X'),array.index('X')-3);
-	print "Slid up";
+	if (array.index('X')<3):
+		print "Invalid move";
+	else:
+		swap(array,array.index('X'),array.index('X')-3);
+		print "Slid up";
 	return True;
 
 def down(array):
-	swap(array,array.index('X'),array.index('X')+3);
-	print "Slid down";
+	if (array.index('X')>5):
+		print "Invalid move";
+	else:
+		swap(array,array.index('X'),array.index('X')+3);
+		print "Slid down";
 	return True;
 
 def invalid(array):
