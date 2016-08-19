@@ -1,5 +1,12 @@
+import csv;
+import time;
+import datetime;
+ts=time.time();
+st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S');
+output_file = open("games/"+st+".txt", "w");
 solved = [1,2,3,4,5,6,7,8,'X'];
 unsolved = [4,2,6,1,3,8,5,'X',7];
+player_moves = [];
 # [4,2,6]
 # [1,3,8]
 # [5,x,7]
@@ -19,6 +26,7 @@ def left(array):
 	else:
 		swap(array,array.index('X'),array.index('X')-1);
 		print "Slid left";
+		player_moves.append('left');
 	return True;
 
 def right(array):
@@ -27,6 +35,7 @@ def right(array):
 	else:
 		swap(array,array.index('X'),array.index('X')+1);
 		print "Slid right";
+		player_moves.append('right');
 	return True;
 
 def up(array):
@@ -35,6 +44,7 @@ def up(array):
 	else:
 		swap(array,array.index('X'),array.index('X')-3);
 		print "Slid up";
+		player_moves.append('up');
 	return True;
 
 def down(array):
@@ -43,6 +53,7 @@ def down(array):
 	else:
 		swap(array,array.index('X'),array.index('X')+3);
 		print "Slid down";
+		player_moves.append('down');
 	return True;
 
 def invalid(array):
@@ -78,8 +89,16 @@ game_in_progress = True;
 
 while game_in_progress:
 	move = raw_input('Enter a direction to move X: ');
+	if(move=='endgame'):
+		print 'Game Ended';
+		# output_file.write(''.join(player_moves));
+		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
+		wr.writerow(player_moves);
+		game_in_progress = False;
+
 	slide(move);
 	printBoard(unsolved);
 	if(unsolved == solved):
 		print 'You win!!!';
+		output_file.write(player_moves);
 		game_in_progress = False;
