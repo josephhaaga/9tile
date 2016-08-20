@@ -2,21 +2,12 @@ import random;
 import csv;
 import time;
 import datetime;
-from BoardGenerator import *;
-from HelperFunctions import *;
 ts=time.time();
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S');
 output_file = open("games/"+st+".txt", "w");
 solved = [1,2,3,4,5,6,7,8,'X'];
-
-# Theoretically unsolvable board configuration
 # unsolved = [4,2,6,1,3,8,5,'X',7];
-
-# Previously solved board configuration
-# unsolved =  [1,2,3,4,6,'X',7,5,8];
-
-unsolved = BoardGenerator.generate(100);
-
+unsolved =  [1,2,3,4,6,'X',7,5,8];
 possible_moves = ['up','down','left','right'];
 possible_move_opposites = ['down','up','right','left'];
 # save copy of original gameboard
@@ -60,8 +51,6 @@ def swap(array,index1,index2):
 	temp = array[index1];
 	array[index1]=array[index2];
 	array[index2]=temp;
-	# print str(temp)+' moved to position '+str(index2);
-	# print str(array[index1])+' moved to position '+str(index1);
 	return array;
 
 def left(array):
