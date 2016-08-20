@@ -2,20 +2,20 @@ import random;
 import csv;
 import time;
 import datetime;
-# from BoardGenerator import *;
-# from HelperFunctions import *;
-
 ts=time.time();
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S');
 output_file = open("games/"+st+".txt", "w");
 solved = [1,2,3,4,5,6,7,8,'X'];
-
+# unsolved = [4,2,6,1,3,8,5,'X',7];
 unsolved =  [1,2,3,4,6,'X',7,5,8];
-
 possible_moves = ['up','down','left','right'];
 possible_move_opposites = ['down','up','right','left'];
+# save copy of original gameboard
 unsolved_original = unsolved;
 player_moves = [];
+# [4,2,6]
+# [1,3,8]
+# [5,x,7]
 
 def opposite(move):
 	move_index = possible_moves.index(move);
@@ -121,8 +121,6 @@ def printBoard(array):
 	print str(array[6])+' '+str(array[7])+' '+str(array[8]);
 	print '\n';
 	return True;
-
-
 
 printBoard(unsolved);
 

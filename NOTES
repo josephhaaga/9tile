@@ -1,0 +1,21 @@
+NOTES:
+
+1. Random move approach
+	- Many invalid moves
+2. Semi-random move approach
+	- Eliminate invalid moves and opposite(previous move)
+		- opposite(previous move) would cause a loop
+
+Concerns:
+	Is [4,2,6,1,3,8,5,'X',7] a solvable board configuration?
+	- Lets start with an easier one
+
+Eventually
+	- Informed approach using (Euclidean?) distance matrix to evaluate whether solver is moving in 'the right direction'
+
+
+# Theoretically unsolvable board configuration
+# unsolved = [4,2,6,1,3,8,5,'X',7];
+
+# Previously solved board configuration
+# unsolved =  [1,2,3,4,6,'X',7,5,8];

@@ -1,22 +1,7 @@
-import random;
-import csv;
-import time;
-import datetime;
 # from BoardGenerator import *;
-# from HelperFunctions import *;
+# from game import *;
 
-ts=time.time();
-st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S');
-output_file = open("games/"+st+".txt", "w");
-solved = [1,2,3,4,5,6,7,8,'X'];
-
-unsolved =  [1,2,3,4,6,'X',7,5,8];
-
-possible_moves = ['up','down','left','right'];
-possible_move_opposites = ['down','up','right','left'];
-unsolved_original = unsolved;
-player_moves = [];
-
+# HelperFunctions.py
 def opposite(move):
 	move_index = possible_moves.index(move);
 	return possible_move_opposites[move_index];
@@ -121,28 +106,3 @@ def printBoard(array):
 	print str(array[6])+' '+str(array[7])+' '+str(array[8]);
 	print '\n';
 	return True;
-
-
-
-printBoard(unsolved);
-
-game_in_progress = True;
-
-while game_in_progress:
-	move = solver(unsolved);
-	if(move=='endgame'):
-		print 'Game Ended';
-		# output_file.write(''.join(player_moves));
-		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
-		wr.writerow(unsolved_original);
-		wr.writerow(player_moves);
-		game_in_progress = False;
-
-	slide(move);
-	printBoard(unsolved);
-	if(unsolved == solved):
-		print 'You win!!!';
-		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
-		wr.writerow(unsolved_original);
-		wr.writerow(player_moves);
-		game_in_progress = False;
