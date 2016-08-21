@@ -8,6 +8,7 @@ At each point in the game, the pseudo-AI will use the score function to evaluate
 
 - Constructing a distance metric
 	Evaluating different possible moves involves calculating how far each tile is from its final position.
+	A* search is commonly applied to the sliding tile puzzle, with Manhattan Distance used as the heuristic.
 	An ideal distance metric would account for vertical and horizontal distances.
 		- e.g.  1,2,3           1,2,3
 				4,5,6    And    7,8,4
@@ -20,3 +21,6 @@ At each point in the game, the pseudo-AI will use the score function to evaluate
 			    2,1,1           0,1,1
 
 	These distances iterate thru each element in the 'unsolved' matrix, reporting the distances to its final position in the 'solved' matrix.
+
+	Since 9tile represents boards in a vector, the distance metric must use some modulus operator (or equivalent) to determine Y distance
+		- We can also construct a distance metric that perceives the board as a vector, but this is not an accurate depiction of reality, especially considering we have up() and down() swapping.
