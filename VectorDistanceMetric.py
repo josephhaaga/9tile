@@ -132,6 +132,7 @@ def slide(argument,*array):
     # Get the function from switcher dictionary
 	func = switcher.get(argument, invalid);
     # Execute the function
+	print str(array);
 	return func(array);
 
 def printBoard(array):
@@ -148,8 +149,9 @@ printBoard(unsolved);
 
 game_in_progress = True;
 
+
 while game_in_progress:
-	move = solver(unsolved)[0];
+	move = solver(unsolved);
 	print "Slid "+str(move);
 	if(move=='endgame'):
 		print 'Game Ended';
@@ -159,7 +161,7 @@ while game_in_progress:
 		wr.writerow(player_moves);
 		game_in_progress = False;
 
-	slide(move);
+	slide(move,);
 	printBoard(unsolved);
 	if(unsolved == solved):
 		print 'You win!!!';
