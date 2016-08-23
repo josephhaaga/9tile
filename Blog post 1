@@ -1,0 +1,35 @@
+Blog post 1
+
+- Introduction to the problem
+	- an N tile board has N-1 numbered tiles, and a single empty space
+		- N is an integer squared
+	- player moves the empty space around in order to return each tile to its goal position
+
+- Command Line game
+	- structure
+		-Helper functions
+			- slide(direction)
+				- checks move validity
+			- opposite(direction) [not until later though]
+			- printBoard()
+			- solver()
+				- This makes the decisions, and will be the focus of future iteration
+				
+	- pro's/con's
+		- pros
+			- Interactive version allows users to play the game, making note of inherent strategies they use & helping them construct a solver() of their own
+		- cons
+			- As of now, the entire game is in one .py file.
+	- future plans
+		- make the entire package modular, allowing users to pass in their own solver()
+		- add additional puzzles; make this the foundational library for simple puzzle solving algorithms in python
+
+- Naive approach (Random Solver)
+	- Pick a direction at random and perform slide(random direction)
+
+- Common sense approach (SemiRandom solver)
+	- eliminate invalid directions and opposite(previous direction)
+		- Statistics
+			- 1/9 chance X is in a given position
+				- 4/9 chance 1 direction is invalid (X is in top, bottom, left or right edge)
+				- 4/9 change 2 directions are invalid (X is in a corner)

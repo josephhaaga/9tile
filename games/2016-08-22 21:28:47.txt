@@ -1,0 +1,2 @@
+"1","2","3","4","5","6","7","8","X"
+"up","down","left","down","left","right","left","up","up","right","right","down","down","left","left","up","up","right","right","down","down","left","left","up","up","right","right","down","down","left","left","up","up","right","right","down","down","left","left","up","up","right","right","down","down","left","left","up","up","right","right","down","down","left","left","up","up","right","right","down","down"
