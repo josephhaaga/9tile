@@ -1,0 +1,15 @@
+Algorithms research typically manifests as groups of people working on specific problems like the Travelling Salesman Problem, the Seven Bridges of Königsberg, and the Sliding Tile puzzle. This last problem holds a particular significance to me, considering the hours I've wasted playing [and rarely beating] the 15 tile game that sits on my coffee table.
+
+IMG_4132
+
+In the parlance of AI, the sliding tile puzzle is a deterministic, sequential, static, discrete problem involving a single agent. The agent (the one solving the puzzle) perceives the environment (game board), and acts upon the environment according to some heuristic. According to Peter Norvig's Artificial Intelligence: A Modern Approach, task environments are described by a series of properties:
+
+Deterministic - the state of the environment is determined completely by prior state+action taken by agent.
+Alternatively, a stochastic task environment involves some factor of probability preventing us from concluding the exact environment after performing an action.
+Sequential - Every decision is influenced by previous decisions.
+An episodic task would consist of atomic episodes, where the previous scenario has nothing to do with the current one.
+Static - The environment remains the same while the agent is 'thinking'
+Autonomous cars deal with dynamic task environments, where real-world factors (like other drivers, pedestrians) can alter the environment.
+Discrete - Board games consist of a finite (albeit massive) number of states, actions & precepts.
+Continuous describes real world task environments; we cannot possibly predict every scenario that an autonomous car would encounter on the road.
+With the goal being to rearrange tiles in their natural order

@@ -93,7 +93,9 @@ def right(array):
 
 def up(array):
 	# array=list(array)[0]
-	# print str(array);
+	print "UP()"
+	array=array[0]
+	print array.index('X')
 	# print "Up("+str(array)+")";
 	if (array.index('X')<3):
 		print "Invalid move";
@@ -132,7 +134,7 @@ def slide(argument,*array):
     # Get the function from switcher dictionary
 	func = switcher.get(argument, invalid);
     # Execute the function
-	print str(array);
+	print func(array);
 	return func(array);
 
 def printBoard(array):
@@ -161,7 +163,7 @@ while game_in_progress:
 		wr.writerow(player_moves);
 		game_in_progress = False;
 
-	slide(move,);
+	slide(move,unsolved);
 	printBoard(unsolved);
 	if(unsolved == solved):
 		print 'You win!!!';
