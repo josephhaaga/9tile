@@ -3,6 +3,7 @@ import csv;
 import time;
 import datetime;
 import pandas as pd;
+__DEBUG__ = True;
 ts=time.time();
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S');
 output_file = open("games/"+st+".txt", "w");
@@ -49,6 +50,7 @@ def solver(array):
 	temp=array;
 	print "TEMP = "+str(temp)
 	for move in possible_moves_for_this_turn:
+		print "Tried "+str(move)
 		sum=0;
 		# result is the game board after a potential move is performed
 		result = slide(move,temp);
@@ -72,6 +74,10 @@ def swap(array,index1,index2):
 	return array;
 
 def left(array):
+	if __DEBUG__:
+		print "Left()"
+	# List becomes tuple. who knows why
+	array=array[0]
 	if(array.index('X')==0 or array.index('X')==3 or array.index('X')==6):
 		print "Invalid move";
 		return False;
@@ -82,6 +88,10 @@ def left(array):
 	return output;
 
 def right(array):
+	if __DEBUG__:
+		print "Right()"
+	# List becomes tuple. who knows why
+	array=array[0]
 	if(array.index('X')==2 or array.index('X')==5 or array.index('X')==8):
 		print "Invalid move";
 		return False;
@@ -93,7 +103,9 @@ def right(array):
 
 def up(array):
 	# array=list(array)[0]
-	print "UP()"
+	if __DEBUG__:
+		print "Up()"
+	# List becomes tuple. who knows why
 	array=array[0]
 	print array.index('X')
 	# print "Up("+str(array)+")";
@@ -107,6 +119,10 @@ def up(array):
 	return output;
 
 def down(array):
+	if __DEBUG__:
+		print "Down()"
+	# List becomes tuple. who knows why
+	array=array[0]
 	if (array.index('X')>5):
 		print "Invalid move";
 		return False;
@@ -134,7 +150,7 @@ def slide(argument,*array):
     # Get the function from switcher dictionary
 	func = switcher.get(argument, invalid);
     # Execute the function
-	print func(array);
+	# print func(array);
 	return func(array);
 
 def printBoard(array):
@@ -151,24 +167,36 @@ printBoard(unsolved);
 
 game_in_progress = True;
 
+if __DEBUG__:
+	while game_in_progress:
+		move = solver(unsolved);
+		print "Slid "+str(move);
+		if(move=='endgame'):
+			print 'Game Ended';
+			game_in_progress = False;
+		slide(move,unsolved);
+		printBoard(unsolved);
+		if(unsolved == solved):
+			print 'You win!!!';
+			game_in_progress = False;
+else:
+	while game_in_progress:
+		move = solver(unsolved);
+		print "Slid "+str(move);
+		if(move=='endgame'):
+			print 'Game Ended';
+			# output_file.write(''.join(player_moves));
+			wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
+			wr.writerow(unsolved_original);
+			wr.writerow(player_moves);
+			game_in_progress = False;
 
-while game_in_progress:
-	move = solver(unsolved);
-	print "Slid "+str(move);
-	if(move=='endgame'):
-		print 'Game Ended';
-		# output_file.write(''.join(player_moves));
-		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
-		wr.writerow(unsolved_original);
-		wr.writerow(player_moves);
-		game_in_progress = False;
-
-	slide(move,unsolved);
-	printBoard(unsolved);
-	if(unsolved == solved):
-		print 'You win!!!';
-		wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
-		wr.writerow(unsolved_original);
-		wr.writerow(player_moves);
-		game_in_progress = False;
-	
+		slide(move,unsolved);
+		printBoard(unsolved);
+		if(unsolved == solved):
+			print 'You win!!!';
+			wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
+			wr.writerow(unsolved_original);
+			wr.writerow(player_moves);
+			game_in_progress = False;
+		
