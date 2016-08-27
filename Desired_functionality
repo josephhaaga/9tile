@@ -1,0 +1,8 @@
+Desired functionality: User should be able to pass in solution approaches as follows
+
+	def solver():
+		# Some code for solving
+		# has access to globals
+		return move
+
+	9tile.newGame(solver);

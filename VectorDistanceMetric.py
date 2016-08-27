@@ -19,6 +19,7 @@ player_moves = [];
 # [4,2,6]
 # [1,3,8]
 # [5,x,7]
+costs = [];
 
 def opposite(move):
 	move_index = possible_moves.index(move);
@@ -36,19 +37,23 @@ def solver(array):
 	# Remove invalid moves
 	if(array.index('X')==0 or array.index('X')==3 or array.index('X')==6):
 		# cant move left
-		possible_moves_for_this_turn.remove('left');
+		if 'left' in possible_moves_for_this_turn:
+			possible_moves_for_this_turn.remove('left');
 	if(array.index('X')==2 or array.index('X')==5 or array.index('X')==8):
 		# cant move right
-		possible_moves_for_this_turn.remove('right');
+		if 'right' in possible_moves_for_this_turn:
+			possible_moves_for_this_turn.remove('right');
 	if (array.index('X')<3):
 		# cant move up
-		possible_moves_for_this_turn.remove('up');
+		if 'up' in possible_moves_for_this_turn:
+			possible_moves_for_this_turn.remove('up');
 	if (array.index('X')>5):
 		# cant move down
-		possible_moves_for_this_turn.remove('down');
+		if 'down' in possible_moves_for_this_turn:
+			possible_moves_for_this_turn.remove('down');
 	# return random.choice(possible_moves_for_this_turn);
 	scores = {};
-	temp=array;
+	temp=copy.copy(array);
 	print "TEMP = "+str(temp)
 	for move in possible_moves_for_this_turn:
 		print "Tried "+str(move)
@@ -61,8 +66,10 @@ def solver(array):
 			sum = sum+abs(result.index(k)-solved.index(k));
 		scores[move] = sum;
 		print move+" would cost "+str(sum);
+		temp=copy.copy(array);
 	print min(scores.items());
-	return min(scores.items());
+	costs.append(min(scores.items())[0])
+	return min(scores.items())[0];
 
 
 
@@ -199,5 +206,6 @@ else:
 			wr = csv.writer(output_file, quoting=csv.QUOTE_ALL);
 			wr.writerow(unsolved_original);
 			wr.writerow(player_moves);
+			wr.writerow('costs '+costs);
 			game_in_progress = False;
 		
