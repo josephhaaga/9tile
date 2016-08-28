@@ -33,3 +33,6 @@ Blog post 1
 			- 1/9 chance X is in a given position
 				- 4/9 chance 1 direction is invalid (X is in top, bottom, left or right edge)
 				- 4/9 change 2 directions are invalid (X is in a corner)
+
+"Johnson & Story (1879) used a parity argument to show that half of the starting positions for the n-puzzle are impossible to resolve, no matter how many moves are made. This is done by considering a function of the tile configuration that is invariant under any valid move, and then using this to partition the space of all possible labeled states into two equivalence classes of reachable and unreachable states." - (https://en.wikipedia.org/wiki/15_puzzle)
+

@@ -24,3 +24,9 @@ At each point in the game, the pseudo-AI will use the score function to evaluate
 
 	Since 9tile represents boards in a vector, the distance metric must use some modulus operator (or equivalent) to determine Y distance
 		- We can also construct a distance metric that perceives the board as a vector, but this is not an accurate depiction of reality, especially considering we have up() and down() swapping.
+
+	AnDee's approach
+		- Solve first row
+		- Solve second row
+		- Solve 9,10,13,14
+		- Solve 11,12,15
